@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Elegant Closet - Moda feminina de qualidade com envio por WhatsApp. Confira nossos vestidos, macaquinhos e mais!">
+  <meta name="keywords" content="moda feminina, roupas, vestidos, Elegant Closet, comprar pelo WhatsApp">
+  <title>Elegant Closet - Moda Feminina</title>
+
+  <!-- Fonte clean e moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --wine:#6a0d45;
+      --pink1:#f8d7f0;
+      --pink2:#f0a6d0;
+      --text:#333;
+      --card:#fff;
+      --shadow:0 8px 24px rgba(0,0,0,.12);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,Arial,sans-serif;
+      color:var(--text);
+      background:#fff;
+      padding-top: 70px; /* Espaço para navbar fixa */
+    }
+
+    /* ===== Header/Banner ===== */
+    header{
+      background: linear-gradient(135deg, var(--pink1), var(--pink2));
+      padding: 36px 20px 28px;
+      text-align:center;
+      border-bottom:2px solid #e5bde2;
+      position: relative;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      max-width:1080px;
+      margin:0 auto;
+    }
+    .brand img{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:var(--shadow);
+      background:#fff;
+    }
+    .brand h1{
+      margin:0;
+      font-size:36px;
+      line-height:1;
+      color:var(--wine);
+      letter-spacing:.5px;
+      text-shadow: 0 2px 0 rgba(255,255,255,.7);
+    }
+    .subtitle{
+      margin:6px 0 0;
+      color:#5a1740;
+      opacity:.9;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    /* ===== Navegação ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--wine);
+      text-decoration: none;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-item {
+      margin: 0 15px;
+    }
+    
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--wine);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease;
+      background-color: var(--wine);
+    }
+    
+    /* ===== Filtros ===== */
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    
+    .filtro-btn {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .filtro-btn:hover, .filtro-btn.ativo {
+      background: var(--wine);
+      color: white;
+      border-color: var(--wine);
+    }
+
+    /* ===== Grid de produtos ===== */
+    .wrap{
+      max-width:1200px;
+      margin: 28px auto 80px;
+      padding:0 20px;
+    }
+    .produtos{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap:24px;
+    }
+    .produto{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:var(--shadow);
+      transition:.3s ease;
+      text-align:center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Garante que todos os cards tenham a mesma altura */
+    }
+    .produto:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.14);
+    }
+    .produto .foto{
+      width:100%;
+      aspect-ratio: 3/4;          /* padroniza tamanho */
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:12px;
+      background:#f2f2f2;
+    }
+    .produto h2{
+      font-size:18px;
+      color:var(--wine);
+      margin:6px 0 4px;
+      flex-grow: 1; /* Faz o título crescer para ocupar espaço disponível */
+    }
+    .preco{
+      font-size:16px;
+      margin:0 0 14px;
+      color:#444;
+      font-weight:600;
+    }
+    
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--wine);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Container para os botões - mantém sempre na parte inferior */
+    .produto-botoes {
+      margin-top: auto; /* Empurra os botões para a parte inferior */
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ===== Botões ===== */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 16px;
+      width:100%;
+      border-radius:10px;
+      border:0;
+      background:#25d366;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      transition: filter .2s ease, transform .02s ease;
+      user-select:none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn:hover{ filter: brightness(1.05); }
+    .btn svg{ width:20px; height:20px; }
+    
+    .btn-detalhes {
+      background: var(--pink2);
+      color: var(--text);
+    }
+    
+    .btn-carrinho {
+      background: var(--wine);
+    }
+
+    /* ===== Botão flutuante de contato ===== */
+    .zap-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      border-radius:50%;
+      width: 60px;
+      height: 60px;
+      background:#25d366;
+      box-shadow:var(--shadow);
+      display:flex; 
+      align-items:center; 
+      justify-content:center;
+      z-index: 999;
+      transition: transform 0.3s;
+    }
+    .zap-float:hover {
+      transform: scale(1.05);
+    }
+    .zap-float svg{ 
+      width:30px; 
+      height:30px; 
+      fill:#fff; 
+    }
+    .zap-float:active{ transform: translateY(1px); }
+    
+    /* ===== Carrinho ===== */
+    .carrinho-btn {
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--wine);
+    }
+    
+    .contador-carrinho {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--wine);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carrinho-flutuante {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      width: 350px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 15px;
+      z-index: 1000;
+      display: none;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .carrinho-flutuante.ativo {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+    
+    .carrinho-vazio {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+    
+    .carrinho-item {
+      display: flex;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .carrinho-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+    
+    .carrinho-info {
+      flex-grow: 1;
+      text-align: left;
+    }
+    
+    .carrinho-info h4 {
+      margin: 0 0 5px;
+      font-size: 0.9rem;
+    }
+    
+    .carrinho-info p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .carrinho-remover {
+      background: none;
+      border: none;
+      color: #ff3b30;
+      cursor: pointer;
+      font-size: 1rem;
+      align-self: center;
+    }
+    
+    .carrinho-total {
+      margin-top: 15px;
+      font-weight: 700;
+      text-align: right;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .btn-finalizar {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    /* ===== Paginação ===== */
+    .paginacao {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 10px;
+    }
+    
+    .pagina-btn {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      background: white;
+      transition: all 0.3s;
+    }
+    
+    .pagina-btn:hover, .pagina-btn.ativo {
+      background: var(--wine);
+      color: white;
+    }
+    
+    /* ===== Modal ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1001;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .modal.ativo {
+      display: flex;
+      animation: fadeIn 0.3s;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 800px;
+      padding: 25px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .fechar-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+      background: none;
+      border: none;
+      z-index: 10;
+    }
+    
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    @media (min-width: 768px) {
+      .modal-body {
+        flex-direction: row;
+      }
+    }
+    
+    .modal-img-container {
+      width: 100%;
+      position: relative;
+    }
+    
+    @media (min-width: 768px) {
+      .modal-img-container {
+        width: 40%;
+      }
+    }
+    
+    .modal-img {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+    
+    .modal-info {
+      flex-grow: 1;
+    }
+    
+    .modal-titulo {
+      margin-top: 0;
+      color: var(--wine);
+      font-size: 1.5rem;
+    }
+    
+    .modal-preco {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #444;
+      margin: 10px 0;
+    }
+    
+    .modal-descricao {
+      margin: 15px 0;
+      line-height: 1.6;
+      color: #555;
+    }
+    
+    .modal-tamanhos {
+      margin: 20px 0;
+    }
+    
+    .modal-tamanhos h3 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .tamanhos-opcoes {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .tamanho-btn {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .tamanho-btn:hover, .tamanho-btn.selecionado {
+      background: var(--wine);
+      color: white;
+      border-color: var(--wine);
+    }
+    
+    .modal-acoes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    @media (min-width: 480px) {
+      .modal-acoes {
+        flex-direction: row;
+      }
+      
+      .modal-acoes .btn {
+        width: auto;
+        flex: 1;
+      }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--wine);
+      color: white;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .footer-section h3 {
+      margin-top: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    /* ===== Animações ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .produto {
+      animation: slideIn 0.5s ease forwards;
+    }
+    
+    /* ===== Responsividade ===== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .hamburger.ativo .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.ativo .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .hamburger.ativo .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        padding: 20px 0;
+      }
+      
+      .nav-menu.ativo {
+        left: 0;
+      }
+      
+      .nav-item {
+        margin: 15px 0;
+      }
+      
+      .brand h1 {
+        font-size: 28px;
+      }
+      
+      .brand img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .filtros {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .carrinho-flutuante {
+        width: 90%;
+        right: 5%;
+      }
+      
+      .modal-content {
+        padding: 20px 15px;
+      }
+      
+      .tamanhos-opcoes {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">Elegant Closet</a>
+    
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Início</a>
+      </li>
+      <li class="nav-item">
+        <a href="#produtos" class="nav-link">Produtos</a>
+      </li>
+      <li class="nav-item">
+        <a href="#sobre" class="nav-link">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a href="#contato" class="nav-link">Contato</a>
+      </li>
+      <li class="nav-item">
+        <button class="carrinho-btn">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="contador-carrinho">0</span>
+        </button>
+      </li>
+    </ul>
+    
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
+
+  <!-- Carrinho flutuante -->
+  <div class="carrinho-flutuante">
+    <h3>Seu Carrinho</h3>
+    <div class="carrinho-items">
+      <!-- Itens do carrinho serão adicionados via JavaScript -->
+    </div>
+    <div class="carrinho-vazio">Seu carrinho está vazio</div>
+    <div class="carrinho-total">
+      Total: R$ <span class="total-valor">0,00</span>
+    </div>
+    <button class="btn btn-finalizar">
+      Finalizar Compra no WhatsApp
+    </button>
+  </div>
+
+  <!-- Header com a sua logo -->
+  <header>
+    <div class="brand">
+      <img src="img/Elegant Closet.png" alt="Elegant Closet">
+      <h1>Elegant Closet</h1>
+      <div class="subtitle">Moda feminina • Envio por WhatsApp</div>
+    </div>
+  </header>
+
+  <!-- Filtros de produtos -->
+  <div class="wrap">
+    <div class="filtros">
+      <button class="filtro-btn ativo" data-filter="todos">Todos</button>
+      <button class="filtro-btn" data-filter="vestidos">Vestidos</button>
+      <button class="filtro-btn" data-filter="macaquinhos">Macaquinhos</button>
+      <button class="filtro-btn" data-filter="blusas">Blusas</button>
+      <button class="filtro-btn" data-filter="promocao">Promoções</button>
+    </div>
+
+    <!-- Grid de produtos -->
+    <main id="produtos">
+      <section class="produtos">
+
+        <!-- PRODUTO 1 -->
+        <article class="produto" data-category="macaquinhos promocao" data-id="1" data-nome="MACAQUINHO NO VISCOSE" data-preco="105.00" data-descricao="Macaquinho em viscose azul, confortável e perfeito para o verão. Tecido leve e respirável, ideal para dias quentes." data-imagem="https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Macaquinho">
+          <span class="tag">Promoção</span>
+          <img class="foto" src="img/macaquinho azul.jpg" alt="Macaquinho em Viscose Azul">
+          <h2>MACAQUINHO NO VISCOSE</h2>
+          <p class="preco">R$ 105,00</p>
+          <div class="produto-botoes">
+            <button class="btn btn-carrinho">Adicionar ao Carrinho</button>
+            <button class="btn btn-detalhes">Ver Detalhes</button>
+          </div>
+        </article>
+
+        <!-- PRODUTO 2 -->
+        <article class="produto" data-category="vestidos" data-id="2" data-nome="VESTIDO BICOLOR" data-preco="198.00" data-descricao="Vestido bicolor elegante, perfeito para ocasiões especiais. Corte que valoriza a silhueta." data-imagem="https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Bicolor">
+          <img class="foto" src="img/VESTIDO BICOLOR .jpg" alt="Vestido Bicolor">
+          <h2>VESTIDO BICOLOR</h2>
+          <p class="preco">R$ 198,00</p>
+          <div class="produto-botoes">
+            <button class="btn btn-carrinho">Adicionar ao Carrinho</button>
+            <button class="btn btn-detalhes">Ver Detalhes</button>
+          </div>
+        </article>
+
+        <!-- PRODUTO 3 -->
+        <article class="produto" data-category="vestidos" data-id="3" data-nome="Vestido longo, lastex nas costas e alça regulável" data-preco="135.00" data-descricao="Vestido longo com detalhe em lastex nas costas e alça regulável. Conforto e elegância para qualquer ocasião." data-imagem="https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Longo">
+          <img class="foto" src="img/Vestido longo, lastex nas costas e alça regulável.jpg" alt="Blusa Feminina">
+          <h2>Vestido longo, lastex nas costas e alça regulável</h2>
+          <p class="preco">R$ 135,00</p>
+          <div class="produto-botoes">
+            <button class="btn btn-carrinho">Adicionar ao Carrinho</button>
+            <button class="btn btn-detalhes">Ver Detalhes</button>
+          </div>
+        </article>
+
+        <!-- PRODUTO 4 -->
+        <article class="produto" data-category="vestidos promocao" data-id="4" data-nome="VESTIDO TUBINHO ALFAIATARIA" data-preco="129.90" data-descricao="Vestido tubinho em alfaiataria, corte reto e elegante. Perfeito para o ambiente corporativo ou eventos formais." data-imagem="https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Alfaiataria">
+          <span class="tag">Promoção</span>
+          <img class="foto" src="img/VESTIDO TUBINHO ALFAIATARIA.jpg" alt="Vestido Tubinho">
+          <h2>VESTIDO TUBINHO ALFAIATARIA</h2>
+          <p class="preco">R$ 129,90</p>
+          <div class="produto-botoes">
+            <button class="btn btn-carrinho">Adicionar ao Carrinho</button>
+            <button class="btn btn-detalhes">Ver Detalhes</button>
+          </div>
+        </article>
+
+      </section>
+      
+      <!-- Paginação -->
+      <div class="paginacao">
+        <button class="pagina-btn ativo">1</button>
+        <button class="pagina-btn">2</button>
+        <button class="pagina-btn">3</button>
+        <button class="pagina-btn">></button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal de detalhes do produto -->
+  <div class="modal">
+    <div class="modal-content">
+      <button class="fechar-modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img src="" alt="" class="modal-img">
+        </div>
+        <div class="modal-info">
+          <h2 class="modal-titulo"></h2>
+          <p class="modal-preco"></p>
+          <p class="modal-descricao"></p>
+          <div class="modal-tamanhos">
+            <h3>Tamanhos disponíveis:</h3>
+            <div class="tamanhos-opcoes">
+              <button class="tamanho-btn" data-tamanho="P">P</button>
+              <button class="tamanho-btn" data-tamanho="M">M</button>
+              <button class="tamanho-btn" data-tamanho="G">G</button>
+              <button class="tamanho-btn" data-tamanho="GG">GG</button>
+            </div>
+          </div>
+          <div class="modal-acoes">
+            <button class="btn btn-carrinho modal-btn-carrinho">
+              <i class="fas fa-shopping-bag"></i> Adicionar ao Carrinho
+            </button>
+            <a class="btn modal-btn-whatsapp" target="_blank">
+              <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M19.11 17.43c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.2-.32.21-.6.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.4-1.68-1.56-1.96-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.47.09-.2.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.36-.25.28-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.14.18 1.94 2.96 4.7 4.15.66.28 1.18.45 1.58.58.66.21 1.26.18 1.73.11.53-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.2-.53-.34z"/><path d="M16.02 3C9.38 3 4 8.36 4 14.96c0 2.59.84 4.99 2.27 6.94L4.06 29l7.29-2.16c1.89 1.03 4.06 1.62 6.36 1.62 6.64 0 12.02-5.36 12.02-11.96C29.74 8.36 22.66 3 16.02 3zm0 21.86c-2.21 0-4.26-.65-5.97-1.77l-.43-.27-4.33 1.28 1.39-4.2-.28-.45c-1.25-1.7-1.99-3.8-1.99-6.02 0-5.68 4.66-10.3 10.38-10.3s10.38 4.62 10.38 10.3-4.7 10.43-10.38 10.43z"/></svg>
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Elegant Closet</h3>
+        <p>Moda feminina com elegância e qualidade para todos os momentos.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="#">Início</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <ul class="footer-links">
+          <li><i class="fas fa-phone"></i> (82) 99375-9087</li>
+          <li><i class="fas fa-envelope"></i> contato@elegantcloset.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Rua Fernando Gondim n°45 Centro/Atalaia-AL</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Formas de Pagamento</h3>
+        <p>Cartão de crédito, PIX, transferência bancária.</p>
+        <h3>Entregas</h3>
+        <p>Entregamos para todo Brasil via correios.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Elegant Closet - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante: contato geral -->
+  <a class="zap-float" target="_blank"
+     href="https://wa.me/5582993759087?text=Olá!%20Quero%20falar%20com%20a%20Elegant%20Closet.">
+     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M19.11 17.43c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.2-.32.21-.6.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.4-1.68-1.56-1.96-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.47.09-.2.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.36-.25.28-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.14.18 1.94 2.96 4.7 4.15.66.28 1.18.45 1.58.58.66.21 1.26.18 1.73.11.53-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.2-.53-.34z"/><path fill="#fff" d="M16.02 3C9.38 3 4 8.36 4 14.96c0 2.59.84 4.99 2.27 6.94L4.06 29l7.29-2.16c1.89 1.03 4.06 1.62 6.36 1.62 6.64 0 12.02-5.36 12.02-11.96C29.74 8.36 22.66 3 16.02 3z"/></svg>
+  </a>
+
+  <script>
+    // Dados dos produtos
+    const produtosData = [
+      {
+        id: 1,
+        nome: "MACAQUINHO NO VISCOSE",
+        preco: 105.00,
+        categoria: ["macaquinhos", "promocao"],
+        descricao: "Macaquinho em viscose azul, confortável e perfeito para o verão. Tecido leve e respirável, ideal para dias quentes.",
+        imagem: "https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Macaquinho",
+        tamanhos: ["P", "M", "G", "GG"]
+      },
+      {
+        id: 2,
+        nome: "VESTIDO BICOLOR",
+        preco: 198.00,
+        categoria: ["vestidos"],
+        descricao: "Vestido bicolor elegante, perfeito para ocasiões especiais. Corte que valoriza a silhueta.",
+        imagem: "https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Bicolor",
+        tamanhos: ["P", "M", "G"]
+      },
+      {
+        id: 3,
+        nome: "Vestido longo, lastex nas costas e alça regulável",
+        preco: 135.00,
+        categoria: ["blusas"],
+        descricao: "Vestido longo com detalhe em lastex nas costas e alça regulável. Conforto e elegância para qualquer ocasião.",
+        imagem: "https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Longo",
+        tamanhos: ["M", "G", "GG"]
+      },
+      {
+        id: 4,
+        nome: "VESTIDO TUBINHO ALFAIATARIA",
+        preco: 129.90,
+        categoria: ["vestidos", "promocao"],
+        descricao: "Vestido tubinho em alfaiataria, corte reto e elegante. Perfeito para o ambiente corporativo ou eventos formais.",
+        imagem: "https://via.placeholder.com/300x400/f8d7f0/6a0d45?text=Vestido+Alfaiataria",
+        tamanhos: ["P", "M", "G", "GG"]
+      }
+    ];
+
+    // Menu Hamburguer
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("ativo");
+      navMenu.classList.toggle("ativo");
+    });
+    
+    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+      hamburger.classList.remove("ativo");
+      navMenu.classList.remove("ativo");
+    }));
+    
+    // Fechar menu ao clicar fora dele
+    document.addEventListener("click", (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains("ativo")) {
+        hamburger.classList.remove("ativo");
+        navMenu.classList.remove("ativo");
+      }
+    });
+
+    // Filtros de produtos
+    const filtroBtns = document.querySelectorAll(".filtro-btn");
+    const produtos = document.querySelectorAll(".produto");
+    
+    filtroBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Remove a classe ativo de todos os botões
+        filtroBtns.forEach(b => b.classList.remove("ativo"));
+        // Adiciona a classe ativo ao botão clicado
+        btn.classList.add("ativo");
+        
+        const filter = btn.getAttribute("data-filter");
+        
+        produtos.forEach(produto => {
+          if (filter === "todos" || produto.getAttribute("data-category").includes(filter)) {
+            produto.style.display = "flex";
+            setTimeout(() => {
+              produto.style.opacity = "1";
+              produto.style.transform = "translateY(0)";
+            }, 10);
+          } else {
+            produto.style.opacity = "0";
+            produto.style.transform = "translateY(20px)";
+            setTimeout(() => {
+              produto.style.display = "none";
+            }, 300);
+          }
+        });
+      });
+    });
+    
+    // Modal de detalhes do produto
+    const modal = document.querySelector(".modal");
+    const btnDetalhes = document.querySelectorAll(".btn-detalhes");
+    const fecharModal = document.querySelector(".fechar-modal");
+    const modalImg = document.querySelector(".modal-img");
+    const modalTitulo = document.querySelector(".modal-titulo");
+    const modalPreco = document.querySelector(".modal-preco");
+    const modalDescricao = document.querySelector(".modal-descricao");
+    const modalBtnCarrinho = document.querySelector(".modal-btn-carrinho");
+    const modalBtnWhatsapp = document.querySelector(".modal-btn-whatsapp");
+    const tamanhoBtns = document.querySelectorAll(".tamanho-btn");
+    
+    let produtoAtual = null;
+    let tamanhoSelecionado = null;
+    
+    btnDetalhes.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const produto = btn.closest(".produto");
+        const produtoId = produto.getAttribute("data-id");
+        produtoAtual = produtosData.find(p => p.id == produtoId);
+        
+        modalImg.src = produto.querySelector(".foto").src;
+        modalTitulo.textContent = produtoAtual.nome;
+        modalPreco.textContent = `R$ ${produtoAtual.preco.toFixed(2).replace(".", ",")}`;
+        modalDescricao.textContent = produtoAtual.descricao;
+        
+        // Resetar seleção de tamanhos
+        tamanhoBtns.forEach(btn => btn.classList.remove("selecionado"));
+        tamanhoSelecionado = null;
+        
+        modal.classList.add("ativo");
+        document.body.style.overflow = "hidden";
+      });
+    });
+    
+    fecharModal.addEventListener("click", () => {
+      modal.classList.remove("ativo");
+      document.body.style.overflow = "auto";
+    });
+    
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("ativo");
+        document.body.style.overflow = "auto";
+      }
+    });
+    
+    // Seleção de tamanhos no modal
+    tamanhoBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tamanhoBtns.forEach(b => b.classList.remove("selecionado"));
+        btn.classList.add("selecionado");
+        tamanhoSelecionado = btn.getAttribute("data-tamanho");
+      });
+    });
+    
+    // Adicionar ao carrinho a partir do modal
+    modalBtnCarrinho.addEventListener("click", () => {
+      if (!tamanhoSelecionado) {
+        alert("Por favor, selecione um tamanho.");
+        return;
+      }
+      
+      adicionarAoCarrinho(produtoAtual, tamanhoSelecionado);
+      modal.classList.remove("ativo");
+      document.body.style.overflow = "auto";
+      
+      // Feedback visual
+      modalBtnCarrinho.textContent = "Adicionado!";
+      setTimeout(() => {
+        modalBtnCarrinho.innerHTML = '<i class="fas fa-shopping-bag"></i> Adicionar ao Carrinho';
+      }, 2000);
+    });
+    
+    // Configurar link do WhatsApp no modal
+    modalBtnWhatsapp.addEventListener("click", (e) => {
+      if (!tamanhoSelecionado) {
+        e.preventDefault();
+        alert("Por favor, selecione um tamanho.");
+        return;
+      }
+      
+      const mensagem = `Olá! Tenho interesse no produto: ${produtoAtual.nome} - Tamanho: ${tamanhoSelecionado} - R$ ${produtoAtual.preco.toFixed(2).replace(".", ",")}. Pode me ajudar?`;
+      modalBtnWhatsapp.href = `https://wa.me/5582993759087?text=${encodeURIComponent(mensagem)}`;
+    });
+    
+    // Carrinho de compras
+    const carrinhoBtn = document.querySelector(".carrinho-btn");
+    const carrinhoFlutuante = document.querySelector(".carrinho-flutuante");
+    const contadorCarrinho = document.querySelector(".contador-carrinho");
+    const carrinhoItems = document.querySelector(".carrinho-items");
+    const carrinhoVazio = document.querySelector(".carrinho-vazio");
+    const totalValor = document.querySelector(".total-valor");
+    const btnFinalizar = document.querySelector(".btn-finalizar");
+    
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    
+    carrinhoBtn.addEventListener("click", () => {
+      carrinhoFlutuante.classList.toggle("ativo");
+    });
+    
+    // Fechar carrinho ao clicar fora
+    document.addEventListener("click", (e) => {
+      if (!carrinhoBtn.contains(e.target) && !carrinhoFlutuante.contains(e.target) && carrinhoFlutuante.classList.contains("ativo")) {
+        carrinhoFlutuante.classList.remove("ativo");
+      }
+    });
+    
+    // Adicionar produtos ao carrinho
+    document.querySelectorAll(".btn-carrinho").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const produto = btn.closest(".produto");
+        const produtoId = produto.getAttribute("data-id");
+        const produtoData = produtosData.find(p => p.id == produtoId);
+        
+        // Para produtos na lista, usar o primeiro tamanho disponível como padrão
+        adicionarAoCarrinho(produtoData, produtoData.tamanhos[0]);
+        
+        // Feedback visual
+        btn.textContent = "Adicionado!";
+        setTimeout(() => {
+          btn.textContent = "Adicionar ao Carrinho";
+        }, 2000);
+      });
+    });
+    
+    function adicionarAoCarrinho(produto, tamanho) {
+      // Verifica se o produto já está no carrinho
+      const index = carrinho.findIndex(item => item.id === produto.id && item.tamanho === tamanho);
+      
+      if (index !== -1) {
+        // Produto já existe, aumenta a quantidade
+        carrinho[index].quantidade++;
+      } else {
+        // Adiciona novo produto ao carrinho
+        carrinho.push({
+          id: produto.id,
+          nome: produto.nome,
+          preco: produto.preco,
+          imagem: produto.imagem,
+          tamanho: tamanho,
+          quantidade: 1
+        });
+      }
+      
+      // Salva no localStorage
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      
+      // Atualiza a interface do carrinho
+      atualizarCarrinho();
+      
+      // Mostra o carrinho
+      carrinhoFlutuante.classList.add("ativo");
+    }
+    
+    function atualizarCarrinho() {
+      // Limpa o carrinho
+      carrinhoItems.innerHTML = "";
+      let total = 0;
+      let totalItens = 0;
+      
+      // Adiciona os itens atualizados
+      carrinho.forEach((item, index) => {
+        const itemTotal = item.preco * item.quantidade;
+        total += itemTotal;
+        totalItens += item.quantidade;
+        
+        const carrinhoItem = document.createElement("div");
+        carrinhoItem.classList.add("carrinho-item");
+        carrinhoItem.innerHTML = `
+          <img src="${item.imagem}" alt="${item.nome}">
+          <div class="carrinho-info">
+            <h4>${item.nome}</h4>
+            <p>Tamanho: ${item.tamanho} | Quantidade: ${item.quantidade}</p>
+            <p>R$ ${item.preco.toFixed(2).replace(".", ",")}</p>
+          </div>
+          <button class="carrinho-remover" data-index="${index}">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        
+        carrinhoItems.appendChild(carrinhoItem);
+      });
+      
+      // Atualiza o total e o contador
+      totalValor.textContent = total.toFixed(2).replace(".", ",");
+      contadorCarrinho.textContent = totalItens;
+      
+      // Mostra ou esconde a mensagem de carrinho vazio
+      if (carrinho.length === 0) {
+        carrinhoVazio.style.display = "block";
+        carrinhoItems.style.display = "none";
+        document.querySelector(".carrinho-total").style.display = "none";
+        btnFinalizar.style.display = "none";
+      } else {
+        carrinhoVazio.style.display = "none";
+        carrinhoItems.style.display = "block";
+        document.querySelector(".carrinho-total").style.display = "block";
+        btnFinalizar.style.display = "block";
+      }
+      
+      // Adiciona eventos aos botões de remover
+      document.querySelectorAll(".carrinho-remover").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const index = btn.getAttribute("data-index");
+          removerDoCarrinho(index);
+        });
+      });
+    }
+    
+    function removerDoCarrinho(index) {
+      carrinho.splice(index, 1);
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      atualizarCarrinho();
+    }
+    
+    // Finalizar compra
+    btnFinalizar.addEventListener("click", () => {
+      if (carrinho.length === 0) return;
+      
+      let mensagem = "Olá! Gostaria de fazer um pedido:\n\n";
+      let total = 0;
+      
+      carrinho.forEach(item => {
+        const itemTotal = item.preco * item.quantidade;
+        total += itemTotal;
+        mensagem += `- ${item.nome} (Tamanho: ${item.tamanho}) | Quantidade: ${item.quantidade} | R$ ${item.preco.toFixed(2).replace(".", ",")}\n`;
+      });
+      
+      mensagem += `\nTotal: R$ ${total.toFixed(2).replace(".", ",")}`;
+      mensagem += "\n\nPor favor, confirme meu pedido!";
+      
+      window.open(`https://wa.me/5582993759087?text=${encodeURIComponent(mensagem)}`, "_blank");
+    });
+    
+    // Inicializar carrinho
+    atualizarCarrinho();
+    
+    // Paginação (simulação)
+    const paginaBtns = document.querySelectorAll(".pagina-btn");
+    
+    paginaBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        paginaBtns.forEach(b => b.classList.remove("ativo"));
+        btn.classList.add("ativo");
+        // Aqui iria a lógica para carregar a página correspondente
+      });
+    });
+  </script>
+</body>
+</html>
